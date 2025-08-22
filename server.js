@@ -20,13 +20,7 @@ app.use(express.json());
 /* ---- UTIL: forward to StreamElements ---- */
 async function forwardToSE({ username='Anonymous', amount=0, currency='THB', message='' }) {
   try {
-    const payload = {
-      username,
-      amount,
-      currency,
-      message,
-      provider: 'streamlabs' // helps identify origin
-    };
+    const payload = { username, amount: 5, currency: 'USD', message };
     const res = await axios.post(SE_TIPS_URL, payload, {
       headers: { Authorization: `Bearer ${SE_JWT}`, 'Content-Type': 'application/json' },
       timeout: 10000
